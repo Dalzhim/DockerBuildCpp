@@ -3,8 +3,9 @@
 1. Install Docker
 1. `git clone https://github.com/Dalzhim/DockerBuildCpp.git`
 1. `cd DockerBuildCpp`
-1. `docker build -t toolchain toolchain`
-1. `docker run --rm -it -v $(pwd)/src:/Sources -v $(pwd)/Build:/Build -v $(pwd)/Install:/Install --user $(id -u):$(id -g) toolchain`
+1. Create the Docker container that holds the toolchain : `docker build -t toolchain toolchain`
+1. Execute the toolchain container to build the Hello World application : `docker run --rm -it -v $(pwd)/src:/Sources -v $(pwd)/Build:/Build -v $(pwd)/Install:/Install --user $(id -u):$(id -g) toolchain`
+1. Execute de Hello World application : `docker run --rm -it -v $(pwd)/Install:/Install --user $(id -u):$(id -g) --workdir /Install/bin --entrypoint ./hellocpp toolchain`
 
 # Troubleshooting
 
